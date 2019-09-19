@@ -16,7 +16,7 @@
     <jpa:repositories base-package="cr.ac.una.repositories"/><!--Aca se indica donde van a estar los repositorios-->
     <context:component-scan base-package="cr.ac.una"/><!--Tambien donde van a estar los beans-->
    <aop:aspectj-autoproxy/>
-   <!-- <bean id="personaServiceAOP" class="cr.ac.una.aop.PersonaServiceAOP" /> crear la clase de aop-->
+   <bean id="serviceAOP" class="cr.ac.una.AOP.ServiceAOP" />
 
 
     <bean id="entityManagerFactory"

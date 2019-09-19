@@ -13,16 +13,50 @@
     <h:form>
         <p:dataTable var="tipo" id="tablaTipoMocion" value="#{tipoBean.tipos}">
             <p:column headerText="Id">
-                <h:outputText value="#{tipo.id_tipo_mocion}" id="id_tipo_mocion"/>
+                <h:outputText value="#{tipo.id_tipo_mocion}" id="id"/>
             </p:column>
 
             <p:column headerText="Descripcion">
                 <h:outputText value="#{tipo.descripcion}" />
             </p:column>
 
+            <p:column headerText="Acciones">
+
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{tipoBean.delete}" update="tablaTipoMocion" >
+                    <f:param name="PersonaId" value="#{tipo.id_tipo_mocion}"/>
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"  />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                    <f:setPropertyActionListener target="#{tipoBean.tipoMocion}" value="#{tipo}"/>
+                </p:commandButton>
+            </p:column>
+
         </p:dataTable>
     </h:form>
     <p:linkButton outcome="tipoMocionCreate" value="Crear Tipo de Mocion" style="margin-right:20px;"/>
+
+    <p:dialog id="dlgE" header="Modificar Tipo Mocion" showEffect="explode" hideEffect="explode"
+              widgetVar="dlg" modal="true" resizable="false" minWidth="200">
+        <h:form id="registrationForm" >
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Id:" for="id_tipo_mocion"/>
+                <p:inputText id="id_tipo_mocion" readonly="true" value="#{tipoBean.tipoMocion.id_tipo_mocion}"/>
+
+                <p:outputLabel value="Descripcion:" for="descripcion"/>
+                <p:inputText id="descripcion"  value="#{tipoBean.tipoMocion.descripcion}"/>
+
+            </h:panelGrid>
+            <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaTipoMocion)"  action="#{tipoBean.update}"
+                             oncomplete="PF('dlg').hide();"   style="margin-right:20px;" styleClass="ui-priority-primary"/>
+        </h:form>
+    </p:dialog>
 
 </h:body>
 </html>

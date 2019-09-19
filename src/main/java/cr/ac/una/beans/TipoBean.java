@@ -17,7 +17,6 @@ public class TipoBean {
     TipoService tipoService;
     private TipoMocion tipoMocion=new TipoMocion();
     private List<TipoMocion> tipos;
-
     @PostConstruct
     public void init() {
         tipos = tipoService.getAllTipos();

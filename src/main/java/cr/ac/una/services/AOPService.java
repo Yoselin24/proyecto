@@ -1,7 +1,5 @@
 package cr.ac.una.services;
-
 import cr.ac.una.entities.AOP;
-import cr.ac.una.entities.Mocion;
 import cr.ac.una.repositories.AOPRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

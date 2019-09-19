@@ -10,7 +10,4 @@ public class ServiceAOP {
     @Autowired
     AOPService aopService;
 
-
-
-
 }

@@ -1,6 +1,7 @@
 package cr.ac.una.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ import java.util.Date;
 @Table(name="aop")
 
 public class AOP {
-
+  @Id
     private int id;
     private String transaccion;
     private String clase;

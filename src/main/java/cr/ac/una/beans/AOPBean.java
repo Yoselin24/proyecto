@@ -7,10 +7,7 @@ import cr.ac.una.services.AOPService;
 import cr.ac.una.services.MocionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import java.util.List;
 
 @Component

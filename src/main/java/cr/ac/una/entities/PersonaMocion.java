@@ -6,7 +6,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="persona_mocion")
-public class PersonaMocion implements Serializable {
+public class
+
+PersonaMocion implements Serializable {
     @Id
     private int id_persona_mocion;
 

@@ -83,7 +83,7 @@ public class PersonaMocionBean {
     public void update() {
         personaMocionService.createPersonaMocion(personaMocion);
         personasMocion = personaMocionService.getAllPersonasMocion();
-       addMessage("Aviso", "Registro modificado correctamente.");
+        addMessage("Aviso", "Registro modificado correctamente.");
         personaMocion=null;
     }
 

@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<head>
-    <title>Title</title>
-</head>
+
+<h:head>
+</h:head>
 <h:body>
-    <h1>Lista de personas mociones</h1>
+    <h1>Lista de Personas Mociones</h1>
     <h:form >
         <p:growl id="msgs" showDetail="true"/>
-        <p:dataTable var="personamocion" id="tablaPersonaMocion" value="#{personaMocionBean.personasMocion}" scrollable="true" scrollHeight="450">
+        <p:dataTable var="personitaMocion" id="tablaPersonaMocion" value="#{personaMocionBean.personasMocion}" scrollable="true" scrollHeight="450">
             <p:column headerText="Id">
-                <h:outputText value="#{personamocion.id_persona_mocion}" id="id"/>
+                <h:outputText value="#{personitaMocion.id_persona_mocion}" id="id"/>
             </p:column>
-
             <p:column headerText="Persona">
-                <h:outputText value="#{personamocion.persona}" />
+                <h:outputText value="#{personitaMocion.persona.nombre}" />
             </p:column>
-
             <p:column headerText="Mocion">
-                <h:outputText value="#{personamocion.mocion}" />
+                <h:outputText value="#{personitaMocion.mocion.id_mocion}" />
             </p:column>
-
 
             <p:column headerText="Acciones">
 
                 <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{personaMocionBean.delete}" update="tablaPersonaMocion" >
-                    <f:param name="PersonaId" value="#{personamocion.id_persona_mocion}"/>
+                    <f:param name="PersonaId" value="#{personitaMocion.id_persona_mocion}"/>
                     <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
                                icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
@@ -41,7 +37,7 @@
                 </p:confirmDialog>
 
                 <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
-                    <f:setPropertyActionListener target="#{personaMocionBean.personaMocion}" value="#{personamocion}"/>
+                    <f:setPropertyActionListener target="#{mocionBean.mocion}" value="#{mocion}"/>
                 </p:commandButton>
             </p:column>
         </p:dataTable></h:form>

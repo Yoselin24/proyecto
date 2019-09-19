@@ -8,12 +8,11 @@ import java.util.Set;
 public class Mocion {
     @Id
     private int id_mocion;
+    private int tipo;
     private Date fecha;
     private String texto;
-    private int tipo;
-    @OneToMany(mappedBy = "mocion")
-    private Set<PersonaMocion> personaMocions ;
-
+   // @OneToMany(mappedBy = "mocion")
+    //private Set<PersonaMocion> personaMocion ;
     @OneToOne
     @JoinColumn(name="tipo_mocion", nullable = false)
     private TipoMocion tipoMocion;
@@ -75,9 +74,10 @@ public class Mocion {
     public String toString() {
         return "Mocion{" +
                 "id_mocion=" + id_mocion +
+                ", tipo=" + tipo +
                 ", fecha=" + fecha +
                 ", texto='" + texto + '\'' +
-                ", tipo=" + tipo +
+               // ", personaMocions=" + personaMocion +
                 ", tipoMocion=" + tipoMocion +
                 '}';
     }
