@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Lista de personas</h1>
+    <h:form >
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="persona" id="tablaPersona" value="#{personaBean.personas}" scrollable="true" scrollHeight="450">
+            <p:column headerText="Id">
+                <h:outputText value="#{persona.id_persona}" id="id"/>
+            </p:column>
+
+            <p:column headerText="Nombre">
+                <h:outputText value="#{persona.nombre}" />
+            </p:column>
+
+            <p:column headerText="Correo">
+                <h:outputText value="#{persona.correo}" />
+            </p:column>
+
+            <p:column headerText="Telefono">
+                <h:outputText value="#{persona.telefono}" />
+            </p:column>
+
+            <p:column headerText="Centro de trabajo">
+                <h:outputText value="#{persona.centro_trabajo}" />
+            </p:column>
+
+
+            <p:column headerText="Acciones">
+
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{personaBean.delete}" update="tablaPersona" >
+                    <f:param name="PersonaId" value="#{persona.id_persona}"/>
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"  />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                    <f:setPropertyActionListener target="#{personaBean.persona}" value="#{persona}"/>
+                </p:commandButton>
+            </p:column>
+        </p:dataTable></h:form>
+    <p:linkButton outcome="personaCreate" value="Crear personas" style="margin-right:20px;"/>
+
+    <p:dialog id="dlgE" header="Modificar Persona" showEffect="explode" hideEffect="explode"
+     widgetVar="dlg" modal="true" resizable="false" minWidth="200">
+        <h:form id="registrationForm" >
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Nombre:" for="id_persona"/>
+            <p:inputText id="id_persona" readonly="true" value="#{personaBean.persona.id_persona}"/>
+
+            <p:outputLabel value="Nombre:" for="nombre"/>
+            <p:inputText id="nombre"  value="#{personaBean.persona.nombre}"/>
+
+            <p:outputLabel value="Coreo:" />
+            <p:inputText id="correo" value="#{personaBean.persona.correo}"/>
+
+            <p:outputLabel value="Telefono:" />
+            <p:inputText id="telefono" value="#{personaBean.persona.telefono}"/>
+
+            <p:outputLabel value="Centro de Trabajo:" />
+            <p:inputText id="centro_trabajo" value="#{personaBean.persona.centro_trabajo}"/>
+
+        </h:panelGrid>
+        <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaPersona)"  action="#{personaBean.update}"
+           oncomplete="PF('dlg').hide();"   style="margin-right:20px;" styleClass="ui-priority-primary"/>
+        </h:form>
+    </p:dialog>
+
+
+</h:body>
+</html>

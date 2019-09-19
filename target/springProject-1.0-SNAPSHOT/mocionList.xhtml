@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <title>Lista de Mociones</title>
+</head>
+<h:body>
+    <h1>Lista de Mociones</h1>
+    <h:form >
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="mocion" id="tablaMocion" value="#{MocionBean.mociones}" scrollable="true" scrollHeight="450">
+            <p:column headerText="Id">
+                <h:outputText value="#{mocion.id_mocion}" id="id"/>
+            </p:column>
+
+            <p:column headerText="Fecha">
+                <h:outputText value="#{mocion.fecha}" />
+            </p:column>
+
+            <p:column headerText="Texto">
+                <h:outputText value="#{mocion.texto}" />
+            </p:column>
+
+            <p:column headerText="Tipo">
+                <h:outputText value="#{mocion.tipo}" />
+            </p:column>
+
+            <p:column headerText="Persona Mocion">
+                <h:outputText value="#{mocion.personaMocions}" />
+            </p:column>
+
+
+            <p:column headerText="Acciones">
+
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{mocionBean.delete}" update="tablaMocion" >
+                    <f:param name="MocionId" value="#{mocion.id_mocion}"/>
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"  />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                    <f:setPropertyActionListener target="#{mocionBean.mocion}" value="#{mocion}"/>
+                </p:commandButton>
+            </p:column>
+        </p:dataTable></h:form>
+    <p:linkButton outcome="mocionCreate" value="Crear Mocion" style="margin-right:20px;"/>
+
+    <p:dialog id="dlgE" header="Modificar Mocion" showEffect="explode" hideEffect="explode"
+              widgetVar="dlg" modal="true" resizable="false" minWidth="200"/>
+    <p:linkButton outcome="mocionCreate" value="Crear Tipo de Mocion" style="margin-right:20px;"/>
+
+</h:body>
+</html>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+    <h1>Lista de personas mociones</h1>
+    <h:form >
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="personamocion" id="tablaPersonaMocion" value="#{personaMocionBean.personasMocion}" scrollable="true" scrollHeight="450">
+            <p:column headerText="Id">
+                <h:outputText value="#{personamocion.id_persona_mocion}" id="id"/>
+            </p:column>
+
+            <p:column headerText="Persona">
+                <h:outputText value="#{personamocion.persona}" />
+            </p:column>
+
+            <p:column headerText="Mocion">
+                <h:outputText value="#{personamocion.mocion}" />
+            </p:column>
+
+
+            <p:column headerText="Acciones">
+
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{personaMocionBean.delete}" update="tablaPersonaMocion" >
+                    <f:param name="PersonaId" value="#{personamocion.id_persona_mocion}"/>
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"  />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                    <f:setPropertyActionListener target="#{personaMocionBean.personaMocion}" value="#{personamocion}"/>
+                </p:commandButton>
+            </p:column>
+        </p:dataTable></h:form>
+    <p:linkButton outcome="personaMocionCreate" value="Crear Persona Mocion" style="margin-right:20px;"/>
+
+    <p:dialog id="dlgE" header="Modificar Persona Mocion" showEffect="explode" hideEffect="explode"
+              widgetVar="dlg" modal="true" resizable="false" minWidth="200">
+        <h:form id="registrationForm" >
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Id:" for="id_persona_mocion"/>
+                <p:inputText id="id_persona_mocion" readonly="true" value="#{personaMocionBean.personaMocion.id_persona_mocion}"/>
+
+                <p:outputLabel value="Persona:" for="persona"/>
+                <p:inputText id="persona"  value="#{personaMocionBean.personaMocion.persona}"/>
+
+                <p:outputLabel value="Mocion:" />
+                <p:inputText id="mocion" value="#{personaMocionBean.personaMocion.mocion}"/>
+
+
+            </h:panelGrid>
+            <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaPersonaMocion)"  action="#{personaMocionBean.update}"
+                             oncomplete="PF('dlg').hide();"   style="margin-right:20px;" styleClass="ui-priority-primary"/>
+        </h:form>
+    </p:dialog>
+
+
+</h:body>
+</html>
