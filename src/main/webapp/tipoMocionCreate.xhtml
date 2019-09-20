@@ -20,7 +20,7 @@
             <p:inputText id="descripcion" required="true" requiredMessage="descripcion requerida" value="#{tipoBean.tipoMocion.descripcion}"/>
             <p:message for="mocion"/>
         </h:panelGrid>
-        <p:commandButton value="Guardar" id="ajax" update="mocion" action="#{tipoBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:commandButton value="Guardar" id="ajax" update="mocion, msgs" action="#{tipoBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
         <p:linkButton outcome="tipoMocionList" value="Lista de tipos de mociones" style="margin-right:20px;">
             <p:ajax update="registrationForm" resetValues="true" />
         </p:linkButton>

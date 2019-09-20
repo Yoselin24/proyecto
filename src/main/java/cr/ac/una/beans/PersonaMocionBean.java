@@ -68,9 +68,15 @@ public class PersonaMocionBean {
     }
 
     public void create() {
-        personaMocionService.createPersonaMocion(personaMocion);
-        personasMocion = personaMocionService.getAllPersonasMocion();
-        personasMocion=null;
+        try{
+            personaMocionService.createPersonaMocion(personaMocion);
+            personasMocion = personaMocionService.getAllPersonasMocion();
+            addMessage( "Aviso","Registro insertado correctamente");
+        }catch (Exception e){}
+        finally {
+            personaMocion=new PersonaMocion();
+        }
+
     }
 
     public void delete()
@@ -78,6 +84,7 @@ public class PersonaMocionBean {
         Integer id=new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("PersonaId"));
         personaMocionService.deletePersonaMocion(id);
         personasMocion=personaMocionService.getAllPersonasMocion();
+        addMessage("Aviso", "Registro eliminado correctamente.");
     }
 
     public void update() {

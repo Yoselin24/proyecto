@@ -8,11 +8,9 @@ import java.util.Set;
 public class Mocion {
     @Id
     private int id_mocion;
-    private int tipo;
+    private java.lang.Integer tipo;
     private Date fecha;
     private String texto;
-   // @OneToMany(mappedBy = "mocion")
-    //private Set<PersonaMocion> personaMocion ;
     @OneToOne
     @JoinColumn(name="tipo_mocion", nullable = false)
     private TipoMocion tipoMocion;
@@ -22,19 +20,11 @@ public class Mocion {
     }
 
 
-    public Mocion(int id_mocion, Date fecha, String texto, int tipo, TipoMocion tipoMocion) {
-        this.id_mocion = id_mocion;
-        this.fecha = fecha;
-        this.texto = texto;
-        this.tipo = tipo;
-        this.tipoMocion = tipoMocion;
-    }
-
-    public int getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
 

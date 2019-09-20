@@ -21,8 +21,6 @@ public class MocionBean {
     private TipoMocion tipoMocion=new TipoMocion();
 
 
-
-
     @PostConstruct
     public void init() {
         mociones = MocionService.getAllMociones();
@@ -60,11 +58,11 @@ public class MocionBean {
         try{
             MocionService.createMocion(mocion);
             mociones = MocionService.getAllMociones();
+            addMessage( "Aviso","Registro insertado correctamente");
         }catch (Exception e){}
         finally {
             mocion=new Mocion();
         }
-
 
     }
 
@@ -73,6 +71,7 @@ public class MocionBean {
         Integer id=new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("PersonaId"));
        MocionService.deleteMocion(id);
        mociones=MocionService.getAllMociones();
+        addMessage("Aviso", "Registro eliminado correctamente.");
     }
 
     public Mocion obtieneMociones(Integer id)

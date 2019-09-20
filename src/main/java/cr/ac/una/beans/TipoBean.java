@@ -37,16 +37,24 @@ public class TipoBean {
     }
 
     public void create() {
-        tipoService.createTipoMocion(tipoMocion);
-        tipos = tipoService.getAllTipos();
-        tipoMocion=null;
+        try{
+            tipoService.createTipoMocion(tipoMocion);
+            tipos = tipoService.getAllTipos();
+            addMessage( "Aviso","Registro insertado correctamente");
+        }catch (Exception e){}
+        finally {
+            tipoMocion=new TipoMocion();
+        }
+
     }
+
 
     public void delete()
     {
         Integer id=new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("PersonaId"));
         tipoService.deleteTipoMocion(id);
         tipos=tipoService.getAllTipos();
+        addMessage("Aviso", "Registro eliminado correctamente.");
     }
 
     public TipoMocion obtieneTipos(Integer id)
