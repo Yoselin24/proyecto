@@ -18,7 +18,7 @@
         <h:panelGrid columns="3" cellpadding="5" id="pal">
 
             <p:outputLabel value="Id:" for="id" />
-            <p:inputText id="id" value="#{personaMocionBean.personaMocion.id_persona_mocion}" />
+            <p:inputText id="id" required="true" requiredMessage="Id requerido" value="#{personaMocionBean.personaMocion.id_persona_mocion}" />
             <p:message for="id" />
 
             <p:outputLabel value="Persona:" />
