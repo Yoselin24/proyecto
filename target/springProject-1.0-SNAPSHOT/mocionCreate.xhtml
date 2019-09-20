@@ -22,7 +22,7 @@
             <p:message for="fecha" />
 
             <p:outputLabel value="Tipo:" for="tipo" />
-            <p:inputText id="tipo" value="#{mocionBean.mocion.tipo}" />
+            <p:inputText id="tipo" required="true" requiredMessage="Tipo requerido" value="#{mocionBean.mocion.tipo}" />
             <p:message for="tipo" />
 
 
@@ -40,7 +40,7 @@
 
         </h:panelGrid>
         <p:commandButton value="Guardar" id="ajax" update="pal,msgs" action="#{mocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
-        <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;"/>
+        <p:linkButton outcome="mocionList" value="Lista de Mociones" style="margin-right:20px;"/>
     </h:form>
 
 
