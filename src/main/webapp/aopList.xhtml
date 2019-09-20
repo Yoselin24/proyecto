@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Lista de Logs</h1>
+    <h:form>
+        <p:dataTable var="log" value="#{aopBean.aops}" id="tabla">
+            <p:column headerText="Id">
+                <h:outputText value="#{log.id}"/>
+            </p:column>
+
+            <p:column headerText="Clase">
+                <h:outputText value="#{log.clase}"/>
+            </p:column>
+
+            <p:column headerText="Transaccion">
+                <h:outputText value="#{log.transaccion}"/>
+            </p:column>
+
+            <p:column headerText="Fecha">
+                <h:outputText value="#{log.fecha}"/>
+            </p:column>
+
+        </p:dataTable>
+        <p:commandButton value="Carga Datos"  action="#{logBean.refrescaLog}" update="tabla" />
+    </h:form>
+    <p:linkButton outcome="personaList" value="Lista personas" style="margin-right:20px;"/>
+
+
+</h:body>
+</html>
