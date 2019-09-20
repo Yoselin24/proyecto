@@ -16,8 +16,8 @@
         <p:growl id="msgs" showDetail="true"/>
 
         <h:panelGrid columns="2" cellpadding="5" id="mocion">
-            <p:outputLabel value="Descripcion:" for="descripcion"/>
-            <p:inputText id="descripcion" value="#{tipoBean.tipoMocion.descripcion}"/>
+            <p:outputLabel value="Descripcion:"  for="descripcion"/>
+            <p:inputText id="descripcion" required="true" requiredMessage="descripcion requerida" value="#{tipoBean.tipoMocion.descripcion}"/>
         </h:panelGrid>
         <p:commandButton value="Guardar" id="ajax" update="mocion" action="#{tipoBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
         <p:linkButton outcome="tipoMocionList" value="Lista de tipos de mociones" style="margin-right:20px;">
