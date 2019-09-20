@@ -16,7 +16,7 @@ public class ServiceAOP {
     AOPService aopService;
     private AOP aop=new AOP();
 
-    @Before("execution( * cr.ac.una.services.PersonaService.createPersona(..))")
+    @Before("execution( * cr.ac.una.beans.PersonaBean.create(..))")
     public void creteLogPersona(JoinPoint joinPoint)
     {
         java.util.Date fecha = new Date();
@@ -26,7 +26,7 @@ public class ServiceAOP {
         aopService.createAOP(aop);
     }
 
-    @Before("execution( * cr.ac.una.services.PersonaService.deletePersona(..))")
+    @Before("execution( * cr.ac.una.beans.PersonaBean.delete(..))")
     public void deleteLogPersona(JoinPoint joinPoint)
     {
         java.util.Date fecha = new Date();
@@ -53,6 +53,36 @@ public class ServiceAOP {
         aop.setFecha(fecha);
         aop.setTransaccion("Persona Modificada");
         aop.setClase("Persona");
+        aopService.createAOP(aop);
+    }
+
+    @Before("execution( * cr.ac.una.beans.MocionBean.create(..))")
+    public void creteLogMocion(JoinPoint joinPoint)
+    {
+        java.util.Date fecha = new Date();
+        aop.setFecha(fecha);
+        aop.setTransaccion("Mocion Creada");
+        aop.setClase("Mocion");
+        aopService.createAOP(aop);
+    }
+
+    @Before("execution( * cr.ac.una.services.MocionService.getAllMociones(..))")
+    public void listLogMocion(JoinPoint joinPoint)
+    {
+        java.util.Date fecha = new Date();
+        aop.setFecha(fecha);
+        aop.setTransaccion("Lista Mociones");
+        aop.setClase("Mocion");
+        aopService.createAOP(aop);
+    }
+
+    @Before("execution( * cr.ac.una.beans.MocionBean.delete(..))")
+    public void deleteLogMocion(JoinPoint joinPoint)
+    {
+        java.util.Date fecha = new Date();
+        aop.setFecha(fecha);
+        aop.setTransaccion("Eliminar Mociones");
+        aop.setClase("Mocion");
         aopService.createAOP(aop);
     }
 
