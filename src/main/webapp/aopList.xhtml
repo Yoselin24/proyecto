@@ -12,7 +12,7 @@
 <h:body>
     <h1>Lista de Logs</h1>
     <h:form>
-        <p:dataTable var="log" value="#{aopBean.aops}" id="tabla">
+        <p:dataTable var="log" value="#{aopBean.aops}" id="tabla" scrollable="true" scrollHeight="450">
             <p:column headerText="Id">
                 <h:outputText value="#{log.id}"/>
             </p:column>
@@ -30,6 +30,7 @@
             </p:column>
 
         </p:dataTable>
+        <p:commandButton value="Update Table" action="#{aopBean.refrescaLog}" update="tabla"/>
     </h:form>
     <p:linkButton outcome="index" value="Ir a Inicio" style="margin-right:20px;"/>
 

@@ -1,10 +1,6 @@
 package cr.ac.una.beans;
 
 import cr.ac.una.entities.AOP;
-import cr.ac.una.entities.Mocion;
-import cr.ac.una.entities.TipoMocion;
-import cr.ac.una.services.AOPService;
-import cr.ac.una.services.MocionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
