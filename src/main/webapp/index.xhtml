@@ -28,6 +28,10 @@
             <p:menuitem value="Mantenimiento Mocion" outcome="mocionList" icon="pi pi-briefcase">
                 <f:param name="i" value="3" />
             </p:menuitem>
+
+            <p:menuitem value="Lista de transacciones" action="#{aopBean.refrescaLog}" outcome="aopList" icon="pi pi-briefcase">
+                <f:param name="i" value="3" />
+            </p:menuitem>
         </p:tabMenu>
     </div>
 

@@ -25,7 +25,6 @@
             <p:column headerText="Texto">
                 <h:outputText value="#{mocion.texto}" />
             </p:column>
-
             <p:column headerText="Tipo Mocion">
                 <h:outputText value="#{mocion.tipoMocion.id_tipo_mocion}" />
             </p:column>
@@ -50,6 +49,7 @@
             </p:column>
         </p:dataTable></h:form>
     <p:linkButton outcome="mocionCreate" value="Crear Mocion" style="margin-right:20px;"/>
+    <p:linkButton outcome="index" value="Ir a Inicio" style="margin-right:20px;"/>
 
     <p:dialog id="dlgE" header="Modificar Mocion" showEffect="explode" hideEffect="explode"
               widgetVar="dlg" modal="true" resizable="false" minWidth="200">
@@ -67,8 +67,12 @@
                 <p:outputLabel value="Texto:" />
                 <p:inputText id="texto" value="#{mocionBean.mocion.texto}"/>
 
-                <p:outputLabel value="Tipo Mocion:" />
-                <p:inputText id="tipoMocion" value="#{mocionBean.mocion.tipoMocion}"/>
+                <p:outputLabel value="Tipo Mocion:"/>
+                <p:selectOneMenu value="#{mocionBean.mocion.tipoMocion}" converter="tipoMocionConverter">
+                    <f:selectItems value="#{tipoBean.tipos}" var="tipoMocion"
+                                   itemValue="#{tipoMocion}"
+                                   itemLabel="#{tipoMocion.descripcion}"/>
+                </p:selectOneMenu>
 
             </h:panelGrid>
             <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaMocion)"  action="#{mocionBean.update}"
