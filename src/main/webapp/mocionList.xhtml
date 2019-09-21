@@ -7,9 +7,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
-    <h1>Lista de Mociones</h1>
+    <h1 id="centro">Lista de Mociones</h1>
     <h:form >
         <p:growl id="msgs" showDetail="true"/>
         <p:dataTable var="mocion" id="tablaMocion" value="#{mocionBean.mociones}" scrollable="true" scrollHeight="450">
@@ -61,9 +63,6 @@
                 <p:outputLabel value="Tipo:" for="tipo"/>
                 <p:inputText id="tipo"  value="#{mocionBean.mocion.tipo}"/>
 
-                <p:outputLabel value="Fecha:" />
-                <p:inputText id="fecha" value="#{mocionBean.mocion.fecha}"/>
-
                 <p:outputLabel value="Texto:" />
                 <p:inputText id="texto" value="#{mocionBean.mocion.texto}"/>
 
@@ -71,7 +70,7 @@
                 <p:selectOneMenu value="#{mocionBean.mocion.tipoMocion}" converter="tipoMocionConverter">
                     <f:selectItems value="#{tipoBean.tipos}" var="tipoMocion"
                                    itemValue="#{tipoMocion}"
-                                   itemLabel="#{tipoMocion.descripcion}"/>
+                                   itemLabel="#{tipoMocion.id_tipo_mocion}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>

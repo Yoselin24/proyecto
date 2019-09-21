@@ -10,7 +10,7 @@ public class
 
 PersonaMocion implements Serializable {
     @Id
-    private int id_persona_mocion;
+    private java.lang.Integer id_persona_mocion;
 
     @OneToOne
     @JoinColumn(name="persona", nullable = false)
@@ -23,17 +23,11 @@ PersonaMocion implements Serializable {
     public PersonaMocion() {
     }
 
-    public PersonaMocion(int id_persona_mocion, Persona persona, Mocion mocion) {
-        this.id_persona_mocion = id_persona_mocion;
-        this.persona = persona;
-        this.mocion = mocion;
-    }
-
-    public int getId_persona_mocion() {
+    public Integer getId_persona_mocion() {
         return id_persona_mocion;
     }
 
-    public void setId_persona_mocion(int id_persona_mocion) {
+    public void setId_persona_mocion(Integer id_persona_mocion) {
         this.id_persona_mocion = id_persona_mocion;
     }
 

@@ -7,9 +7,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
-    <h1>Lista Tipos de mocion</h1>
+    <h1 id="centro">Lista Tipos de mocion</h1>
     <h:form>
         <p:dataTable var="tipo" id="tablaTipoMocion" value="#{tipoBean.tipos}">
             <p:column headerText="Id">

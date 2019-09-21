@@ -7,9 +7,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
-    <h1>Lista de personas</h1>
+    <h1 id="centro">Lista de personas</h1>
     <h:form >
         <p:growl id="msgs" showDetail="true"/>
         <p:dataTable var="persona" id="tablaPersona" value="#{personaBean.personas}" scrollable="true" scrollHeight="450">

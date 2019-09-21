@@ -8,9 +8,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
-    <h1>Lista de Logs</h1>
+    <h1 id="centro">Lista de Logs</h1>
     <h:form>
         <p:dataTable var="log" value="#{aopBean.aops}" id="tabla" scrollable="true" scrollHeight="450">
             <p:column headerText="Id">

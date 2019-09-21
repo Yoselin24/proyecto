@@ -7,9 +7,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
-    <h1>Lista de Personas Mociones</h1>
+    <h1 id="centro">Lista de Personas Mociones</h1>
     <h:form >
         <p:growl id="msgs" showDetail="true"/>
         <p:dataTable var="personitaMocion" id="tablaPersonaMocion" value="#{personaMocionBean.personasMocion}" scrollable="true" scrollHeight="450">
@@ -62,8 +64,7 @@
                 <p:selectOneMenu value="#{personaMocionBean.personaMocion.mocion}" converter="mocionConverter">
                     <f:selectItems value="#{mocionBean.mociones}" var="mocion"
                                    itemValue="#{mocion}"
-                                   itemLabel="#{mocion.id_mocion
-                                   }"/>
+                                   itemLabel="#{mocion.id_mocion}"/>
                 </p:selectOneMenu>
 
 

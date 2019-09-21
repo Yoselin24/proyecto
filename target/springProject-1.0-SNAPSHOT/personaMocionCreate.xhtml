@@ -8,7 +8,9 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
+<div id="header"></div>
 <h:body>
     <h1>Crear Persona Mocion</h1>
 
@@ -33,11 +35,11 @@
             <p:selectOneMenu value="#{personaMocionBean.personaMocion.mocion}" converter="mocionConverter">
                 <f:selectItems value="#{mocionBean.mociones}" var="mocion"
                                itemValue="#{mocion}"
-                               itemLabel="#{mocion.texto}"/>
+                               itemLabel="#{mocion.id_mocion}"/>
             </p:selectOneMenu>
 
         </h:panelGrid>
-        <p:commandButton value="Guardar" id="ajax" update="pal,msgs" action="#{personaMocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:commandButton value="Guardar" id="ajax" update="pal" action="#{personaMocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
         <p:linkButton outcome="personaMocionList" value="Lista Personas Mociones" style="margin-right:20px;"/>
     </h:form>
 
